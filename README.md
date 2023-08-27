@@ -5,4 +5,5 @@
 * Gustavo Jesus Yupanqui Tarazona
 * Sebastian Alexander Chavarry Gutierrez
 * Frank Antonio Caldas Calderon
-## Tema de proyecto (Todavia)
+## Tema de proyecto: Ecommerce de aerolínea
+Vamos a desarrollar un ecommerce que permita comprar boletos para distintos vuelos nacionales e internacionales de una aerolínea, involucrando así el uso de microservicios para los distintos módulos que existan.
