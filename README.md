@@ -695,6 +695,7 @@ Descripción de los elementos de la arquitectura
 - **DynamoDB** : Será una tabla sencilla que tendrá como valores la ciudad y su respectivo clima. La data será almacenada de forma estática para esta demostración.
 
 [https://github.com/sebastianperudev2001/arq\_software\_demo\_lambda](https://github.com/sebastianperudev2001/arq_software_demo_lambda)
+[Vídeo de demo](https://ulima-edu-pe.zoom.us/rec/share/Xh2obiL1otszgmxNxIz1ITIgx8AwaBZ7NAUipYJIhwSEjaiLmECsZV2kVXdo0R16.-cWwZMRFdDuPcKaj)
 
 **5.2: Arquitectura de microservicios y Kubernetes**
 
