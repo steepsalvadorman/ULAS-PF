@@ -537,6 +537,7 @@ La elección de las abstracciones de datos, sus operaciones y propiedades, junto
 ![](RackMultipart20231017-1-kbxkee_html_7c28a60d4bea5c4e.png)
 
 **3.4. Mapeo entre Elementos de Arquitectura**
+![Texto alternativo](./imagenes/mapeodeelementosdearqui.png)
 
 **3.5. Elección de Tecnología**.
 
