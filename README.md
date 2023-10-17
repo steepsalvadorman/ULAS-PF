@@ -102,7 +102,7 @@ Nuestro equipo está formado por profesionales con experiencia en tecnología, t
 | Proveedores de servicios de viaje (aerolíneas, hoteles, compañías de alquiler de autos) | Administrador de Línea de Producto | Desarrolla una familia de productos con los elementos similares | Determinar si un miembro de la familia de productos se ajusta al objetivo global |
 | Inversionistas y accionistas | Conformance Checker | Asegurar los estándares y procesos del producto | Asegurar que los avances siguen la arquitectura planteada |
 | Reguladores y organismos gubernamentales | Representante de Sistema Externo | Responsable del manejo de un sistema con que debemos interactuar | Definir condiciones del acuerdo entre sistemas |
-| Socios estratégicos | Evaluador | Conducir una evaluación formal de la arquitectura | Evaluar la capacidad de la arquitectura para entregar funcionalidades y atributos |
+| Socios estratégicos | Evaluador | Conducir una evaluación formal dse la arquitectura | Evaluar la capacidad de la arquitectura para entregar funcionalidades y atributos |
 | Colaboradores | Ingeniero de sistemas | Responsable del diseño de sistemas o componentes | Asegurar el entorno provisto por el sistema |
 | Alianzas aéreas | Diseñador | Diseño de software para cumplir los requerimientos de los módulos | Resolver problemas de contención de recursos |
 
@@ -699,6 +699,8 @@ Descripción de los elementos de la arquitectura
 - **DynamoDB** : Será una tabla sencilla que tendrá como valores la ciudad y su respectivo clima. La data será almacenada de forma estática para esta demostración.
 
 [https://github.com/sebastianperudev2001/arq\_software\_demo\_lambda](https://github.com/sebastianperudev2001/arq_software_demo_lambda)
+
+[Link de video demostración: ](https://ulima-edu-pe.zoom.us/rec/share/Xh2obiL1otszgmxNxIz1ITIgx8AwaBZ7NAUipYJIhwSEjaiLmECsZV2kVXdo0R16.-cWwZMRFdDuPcKaj)
 
 **5.2: Arquitectura de microservicios y Kubernetes**
 
