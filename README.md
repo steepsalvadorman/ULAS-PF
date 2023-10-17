@@ -109,6 +109,8 @@ Nuestro equipo está formado por profesionales con experiencia en tecnología, t
 **2. Requerimientos del Sistema**
 
 **2.1 Módulo de seguridad**
+![Modulo de seguridad](./imagenes/mseguridad.png)
+![Modulo de seguridad 2](./imagenes/mseguridad2.png)
 
 **2.1.1 Requisitos funcionales**
 
@@ -214,6 +216,7 @@ LambdaVoyage podría estar sujeta a regulaciones y estándares de seguridad esta
 La plataforma de LambdaVoyage podría estar sujeta a regulaciones y estándares de seguridad específicos del sector de viajes y pagos en línea. Estos requisitos pueden incluir el cumplimiento de normativas como el Reglamento General de Protección de Datos (GDPR) para proteger la privacidad de los datos del cliente, así como estándares de seguridad de la industria de pagos (por ejemplo, PCI DSS como estándar de Seguridad de Datos para la Industria de Tarjetas de Pago) para garantizar la seguridad de las transacciones financieras. La empresa debe asegurarse de que su plataforma cumple con todos los requisitos normativos establecidos, lo que puede requerir la implementación de ciertas medidas de seguridad específicas y auditorías regulares para garantizar el cumplimiento, incluyendo la protección de la información de tarjetas de crédito y la prevención de fraudes en transacciones.
 
 **2.2 Módulo reservas**
+![Texto alternativo](./imagenes/mreservas.png)
 
 **2.2.1 Requisitos funcionales**
 
@@ -290,6 +293,8 @@ La empresa entiende que los proveedores de servicios de viaje, como aerolíneas,
 Algunas aerolíneas pueden tener acuerdos o restricciones específicas con respecto a las conexiones de vuelos, lo cual está fuera del control directo de LambdaVoyage.Es por eso que la disponibilidad de vuelos de conexión y las opciones de itinerario pueden estar influenciadas por las políticas de las aerolíneas asociadas.
 
 **2.3 Módulo de pago**
+![Texto alternativo](./imagenes/mpago.png)
+
 
 **2.3.1 Requisitos funcionales**
 
@@ -386,7 +391,7 @@ Existen regulaciones estrictas sobre la seguridad de las transacciones financier
 Las regulaciones gubernamentales y restricciones legales en diferentes países pueden afectar los métodos de pago aceptados o los requisitos de verificación de identidad. No obstante, LambdaVoyage puede establecer límites en el monto de las transacciones que se pueden realizar con ciertos métodos de pago. Esto puede limitar la disponibilidad de métodos de pago que sólo admiten transacciones de un cierto monto, las opciones de pago para ciertos clientes o requerir procedimientos adicionales de verificación, lo que puede influir en la experiencia del usuario.
 
 **2.4 Módulo de tracking**
-
+![Texto alternativo](./imagenes/mtracking.png)
 **2.4.1 Requisitos funcionales**
 
 | ID | Nombre | Historia de Usuario |
@@ -512,6 +517,8 @@ La combinación de Spring WebFlux y Spring Web Client posibilita la escalabilida
 En caso de que la API de divisas proporcione actualizaciones en tiempo real, Spring Web Client puede gestionar la notificación de eventos y actualizaciones a los usuarios de manera reactiva.
 
 **3.3. Modelo de Datos**
+
+![Alt text](./imagenes/modelodedatos.png)
 
 La elección de las abstracciones de datos, sus operaciones y propiedades, junto con la organización de los datos, es un paso crucial en la arquitectura de un sistema como LambdaVoyage. Aquí están las consideraciones para la elección y organización de datos:
 
@@ -663,7 +670,10 @@ Durante el proceso de creación de Lambda también hay que tomar en cuenta ciert
 - **Timeout** : Es posible especificar el tiempo máximo de ejecución para la función antes de que sea automáticamente finalizada.
 - **Monitoreo:** Es posible configurar la función Lambda de tal forma que sea posible utilizar servicios como CloudWatch Logs o CloudWatch Metrics para poder supervisar el comportamiento y rendimiento de la función ejecutada.
 
-**5.1.3: Demo (código)**
+**5.1.3: Demo**
+
+![Texto alternativo](./imagenes/demosebas.jpg)
+
 
 Para la presente demostración del concepto de serverless Lambda, lo que se está planteando es una pequeña aplicación que integra distintos servicios serverless de AWS. El contexto de la aplicación es que LambdaVoyage detectó que una gran parte de los clientes que viajan con mascotas tienen gatos y provienen de Estados Unidos. Por lo tanto, están diseñando un prototipo para que sus clientes puedan determinar si el clima de algunas ciudades de Estados Unidos es óptimo para sus gatos. Por lo tanto, se está siguiendo esta arquitectura:
 
