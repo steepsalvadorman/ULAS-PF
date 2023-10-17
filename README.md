@@ -539,6 +539,8 @@ La elección de las abstracciones de datos, sus operaciones y propiedades, junto
 **3.4. Mapeo entre Elementos de Arquitectura**
 ![Texto alternativo](./imagenes/mapeodeelementosdearqui.png)
 
+En esta arquitectura basada en Spring, se emplea PostgreSQL como base de datos principal y Redis como caché para mejorar el rendimiento. La aplicación se descompone en microservicios desarrollados con Spring Boot, permitiendo una gestión modular de las funcionalidades. Un API Gateway con Spring Cloud Gateway se encarga de dirigir las solicitudes a los microservicios correspondientes, proporcionando seguridad y equilibrio de carga. Además, se utiliza MongoDB para almacenar datos de usuarios, mientras que una API externa de divisas se integra a través de un microservicio dedicado. La pasarela de pagos Stripe se conecta para el procesamiento seguro de transacciones, y el frontend está desarrollado en Angular para crear una interfaz de usuario atractiva. La autenticación se realiza mediante OAuth2, con tokens JWT firmados con RSA, garantizando un sólido sistema de seguridad en la aplicación. Esta arquitectura combina tecnologías robustas para lograr una aplicación escalable y segura.
+
 **3.5. Elección de Tecnología**.
 
 **Angular** : Hemos seleccionado Angular como framework de desarrollo para el Frontend de la aplicación, puesto que Angular se basa en la creación de componentes reutilizables, los cuales permiten encapsular la lógica y la interfaz del usuario. Esto en particular es útil para el caso de negocio, debido a que lo que se busca es un rápido desarrollo de la aplicación para poder comenzar las operaciones de la empresa. En ese sentido, Angular aseguraría un desarrollo más modular y sencillo de mantener en el largo plazo, además de proporcionar código fácil de testear y escalar. Por otro lado, Angular asegura tener una estructura del proyecto que se ajuste a los módulos que se necesitan desarrollar de tal forma que se logra reducir el acoplamiento entre los componentes utilizados.
@@ -696,9 +698,6 @@ Descripción de los elementos de la arquitectura
 
 [https://github.com/sebastianperudev2001/arq\_software\_demo\_lambda](https://github.com/sebastianperudev2001/arq_software_demo_lambda)
 
-
-[Vídeo de demo](https://ulima-edu-pe.zoom.us/rec/share/Xh2obiL1otszgmxNxIz1ITIgx8AwaBZ7NAUipYJIhwSEjaiLmECsZV2kVXdo0R16.-cWwZMRFdDuPcKaj)
-
 **5.2: Arquitectura de microservicios y Kubernetes**
 
 **5.2.1: Desarrollo conceptual**
@@ -824,8 +823,6 @@ on\_connection\_closed=on\_connection\_closed)
 La sección de código exterior muestra cómo se genera dicha conexión utilizando las claves públicas, privadas y el certificado digital. También se configuran algunas funciones en caso de fallos y los puertos de conexión. Esta demo seguirá funcionando hasta que se interrumpa la consola.
 
 **Enlace al código y documentación completa:** https://github.com/steepsalvadorman/ULAS-PF/tree/Frank/Proyecto%20Individual%20(IoT)
-
-[Ver Vídeo](https://drive.google.com/file/d/1sxGET4pcwKOFDFJEBr7_Q8vTRL9vuH9o/view)
 
 **5.4: Seguridad en servicios de nube**
 
