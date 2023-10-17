@@ -577,8 +577,6 @@ Con respecto al aseguramiento del atributo de calidad de la mantenibilidad, es n
 
 **Incremento de la cohesión** : Durante el proceso del diseño de la arquitectura, hemos establecido que cada módulo tiene una responsabilidad única y diferente. Cada módulo cuenta con sus servicios únicos, los cuales suman al propósito determinado de su módulo.
 
-Si una funcionalidad se repite, la pongo en otra
-
 **Disminución del acoplamiento:** El diseño de la arquitectura se ha planteado de tal forma que los módulos no dependen los unos de los otros mediantes las siguientes acciones en específico:
 
 1. **Encapsulamiento** : Tener una API bien definida, establecer interfaces que llamen a la API
