@@ -1,1 +1,45 @@
 
+5.4: Seguridad en servicios de nube
+5.4.1: Desarrollo conceptual
+Los servicios de seguridad en la nube son un conjunto de productos y herramientas que se distribuyen a través de Internet para proteger los datos y las aplicaciones comerciales. Estos servicios pueden ayudar a las empresas a proteger sus datos contra una variedad de riesgos, como ataques cibernéticos, pérdida de datos y violaciones de la privacidad. Los motivos por los que las empresas deberían utilizar los servicios en la nube, estos incluyen:
+
+Seguridad: Los servicios en nube ofrecen una variedad de características y servicios de seguridad para proteger los datos comerciales. Estos servicios pueden ayudar a las empresas a cumplir con las normas de seguridad y a proteger sus datos contra una variedad de amenazas.
+Escalabilidad: Los servicios de seguridad en la nube pueden ampliarse para adaptarse a las necesidades cambiantes de las empresas. Esto significa que a medida que crecen, las empresas no tienen que preocuparse por invertir más en infraestructura de seguridad.
+Coste: Las soluciones de seguridad que las empresas implementan en sus propios centros de datos pueden ser más costosas que los servicios de seguridad en la nube.
+Facilidad de uso: La seguridad de los servicios en nube generalmente es simple de implementar y usar. Esto significa que las empresas no necesitan contratar especialistas en seguridad para supervisar sus productos de seguridad.
+
+5.4.2: Consideraciones técnicas
+
+Por otro lado tenemos los servicios de nube más solicitados y que se usará para el experimento:
+Autenticación y autorización: Son servicios que ayudan a las empresas a evitar el acceso no autorizado a sus datos.
+Cifrado: Estos servicios ayudan a proteger sus datos tanto en reposo como en tránsito.
+Inspección de tráfico: Esto ayuda a encontrar amenazas en el tráfico de red.
+Análisis de amenazas: Servicio para la detección de amenazas y responder a ellas.
+Respuesta a incidentes: Estos servicios ayudan a hacer frente a incidentes de seguridad.
+
+Para la implementación del experimento, se tenían en consideración delimitar las funciones de los servicios en temas de autenticación y autorización. La aplicación puede autenticar a los usuarios utilizando Firebase Authentication y luego utilizar las funciones de autorización de Firestore para restringir el acceso a los datos de los usuarios a los usuarios individuales.
+
+Firebase: 
+Firebase Authentication permite a los usuarios autenticarse segura y fácilmente en aplicaciones móviles y web. Los desarrolladores pueden usar Firebase Authentication para crear sistemas de autenticación personalizados o utilizar uno de los proveedores de identidad integrados de Firebase, como GitHub, Google, Facebook o Twitter.
+
+Firestore:
+Firebase Cloud Firestore ofrece una variedad de herramientas de autorización que le permiten controlar quién puede acceder a los datos. Estas funciones, basadas en los roles de usuario, los grupos de usuarios o el origen del tráfico, pueden ser utilizadas por los desarrolladores para restringir el acceso a los datos.
+
+Firebase Auth:
+Servicio proporcionado por Firebase que facilita la gestión de la autenticación de usuarios en aplicaciones móviles y web. Permite agregar fácilmente funciones de inicio de sesión, registro y autenticación de usuarios a sus aplicaciones, lo que ayuda a crear experiencias de usuario seguras y personalizadas.
+
+User Collections:
+Colección de documentos que almacenan información sobre los usuarios de una aplicación. Cada documento de una colección de usuarios representa a un usuario individual y contiene información como el nombre de usuario, la dirección de correo electrónico, la contraseña y otros datos relevantes.
+
+Custom Claims:
+Datos adicionales que se pueden almacenar en un token de autenticación. Los custom claims son objetos JSON que contienen los datos que se desea almacenar. Por otra parte, el rol de un usuario se puede utilizar para controlar el acceso a los recursos de la aplicación, como las páginas de administración o las funciones de compra.
+
+5.4.3: Demo
+
+Para desarrollar el experimento del proyecto específico, se llevó a cabo una simulación de un escenario en el que una página de guías de esta plataforma tenía dos actores: un usuario que que solo tiene la función o rol de lector y el otro actor es el administrador, que tenían el papel de crear contenido y editar accesos a usuarios comunes para poder crear contenido a nivel de redactor. Además, todas las partes, interacciones y flujo de datos se mostrarían en la plataforma y los servicios de Firebase.
+
+El código desarrollado crea una plataforma de lectura que solo pueden ver aquellos que hayan creado una cuenta. Para hacerlo, deben completar un registro asociado con un correo electrónico y una contraseña en una base de datos de Firebase, donde se guardarán los registros de cada usuario. Los roles asignados por los administradores y las interacciones se controlan en Firestore. Sin embargo, se agrega una funcionalidad llamada addAdminRole en el código, que es una función que se conoce como la misma firestore para supervisar esos datos. 
+
+Esta función y la vinculación a la plataforma de firebase se implementan en el código. Para hacerlo, necesitamos tokens asociados con la cuenta del proyecto, que son los datos de identificación que proporciona la plataforma. Los comandos de instalación y los datos proporcionados por Firebase se incluyen en el readme del proyecto antes del despliegue. Una vez que esté funcionando la creación de acceso, roles y contenido, el análisis y monitoreo de la autorización y validación de usuarios, así como los parámetros de actividades, están a punto de comenzar.
+
+El proyecto y experimentación están cargados en el enlace que redirecciona al repositorio, los detalles de configuración para firebase y firestore estarán disponibles en un readme.
