@@ -695,6 +695,8 @@ Descripción de los elementos de la arquitectura
 - **DynamoDB** : Será una tabla sencilla que tendrá como valores la ciudad y su respectivo clima. La data será almacenada de forma estática para esta demostración.
 
 [https://github.com/sebastianperudev2001/arq\_software\_demo\_lambda](https://github.com/sebastianperudev2001/arq_software_demo_lambda)
+
+
 [Vídeo de demo](https://ulima-edu-pe.zoom.us/rec/share/Xh2obiL1otszgmxNxIz1ITIgx8AwaBZ7NAUipYJIhwSEjaiLmECsZV2kVXdo0R16.-cWwZMRFdDuPcKaj)
 
 **5.2: Arquitectura de microservicios y Kubernetes**
@@ -822,6 +824,8 @@ on\_connection\_closed=on\_connection\_closed)
 La sección de código exterior muestra cómo se genera dicha conexión utilizando las claves públicas, privadas y el certificado digital. También se configuran algunas funciones en caso de fallos y los puertos de conexión. Esta demo seguirá funcionando hasta que se interrumpa la consola.
 
 **Enlace al código y documentación completa:** https://github.com/steepsalvadorman/ULAS-PF/tree/Frank/Proyecto%20Individual%20(IoT)
+
+[Ver Vídeo](https://drive.google.com/file/d/1sxGET4pcwKOFDFJEBr7_Q8vTRL9vuH9o/view)
 
 **5.4: Seguridad en servicios de nube**
 
