@@ -675,10 +675,11 @@ Durante el proceso de creación de Lambda también hay que tomar en cuenta ciert
 
 **5.1.3: Demo**
 
-![Texto alternativo](./imagenes/demosebas.jpg)
 
 
 Para la presente demostración del concepto de serverless Lambda, lo que se está planteando es una pequeña aplicación que integra distintos servicios serverless de AWS. El contexto de la aplicación es que LambdaVoyage detectó que una gran parte de los clientes que viajan con mascotas tienen gatos y provienen de Estados Unidos. Por lo tanto, están diseñando un prototipo para que sus clientes puedan determinar si el clima de algunas ciudades de Estados Unidos es óptimo para sus gatos. Por lo tanto, se está siguiendo esta arquitectura:
+
+![Texto alternativo](./imagenes/demosebas.jpg)
 
 ![](RackMultipart20231017-1-kbxkee_html_ff40519295208de.png)
 
@@ -688,11 +689,12 @@ Descripción de los elementos de la arquitectura
 - **Amazon API Gateway:** Cumple la función de crear el endpoint necesario para que el cliente pueda llamar al lambda desde la interfaz gráfica.
 - **AWS Lambda** : Ejecuta la función que hace un llamado a la Base de Datos en DynamoDB, de la cual obtendrá el clima actual de la ciudad enviada como parámetro. El formato del payload a recibir será el siguiente:
 
+```
 {
-
 "city\_str": " "
-
 }
+```
+
 
 - **DynamoDB** : Será una tabla sencilla que tendrá como valores la ciudad y su respectivo clima. La data será almacenada de forma estática para esta demostración.
 
@@ -790,6 +792,8 @@ Como parte de la demostración de este componente se planteó la siguiente consi
 
 El objetivo de este ejercicio es configurar 3 dispositivos en AWS donde 2 envien datos de la temperatura de la GPU en tiempo real y el último recepcione dichos datos y los muestre en consola. Para esto se utilizó IoT Core configurado en un sistema operativo Windows 10 con Python y el programa de monitoreo OpenHardwareMonitor que nos incluye una librería en su instalación que luego podemos llamar desde el programa en Python. Una vez configurado los 3 dispositivos debemos modificar sus códigos para que 2 muestre en consola los datos que se están enviando y determinado tópico y uno que solo recepciona los datos y los muestre en la consola. Lo que ocurre dentro del código es que se genera una conexión con el protocolo MQTT entre el dispositivo y el servidor de Amazon.
 
+```
+
 mqtt\_connection = mqtt\_connection\_builder.mtls\_from\_path(
 
 endpoint=cmdData.input\_endpoint,
@@ -819,6 +823,9 @@ on\_connection\_success=on\_connection\_success,
 on\_connection\_failure=on\_connection\_failure,
 
 on\_connection\_closed=on\_connection\_closed)
+
+```
+
 
 La sección de código exterior muestra cómo se genera dicha conexión utilizando las claves públicas, privadas y el certificado digital. También se configuran algunas funciones en caso de fallos y los puertos de conexión. Esta demo seguirá funcionando hasta que se interrumpa la consola.
 
