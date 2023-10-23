@@ -16,7 +16,7 @@ Link de avance: https://docs.google.com/document/d/196nMjduarvR2hKu1R4DtyDnqM2pS
 
 **Nombre del startup** : Lambda Voyage
 
-La relación entre consumidores y aerolíneas va en declive. Según el Reporte de Estadísticas Institucionales en 2019, el transporte por vía área ocupa la segunda mayor cantidad de reclamos solo en Perú. Ante esta situación, la familia Lambda busca transformar la experiencia de viajes en latinoamérica centrándose en una experiencia del consumidor A1 desde inicio a fin del vuelo. Por ello, utilizando su larga experiencia en el rubro de las aerolíneas deciden fundar "LambdaVoyage", una empresa de aerolínea que busca proporcionar una experiencia cómoda de viaje a todos sus clientes en todas las etapas del viaje. Para ello, buscó financiamiento del Ministerio de Turismo, el cual recientemente les proporcionó el dinero suficiente para poder financiar toda la logística de la empresa. Debido a su experiencia previa lograron rápidamente conseguir los aviones y pilotos necesarios cómo para comenzar a despegar. No obstante, todavía les faltaba un factor importante para comenzar a generar ingresos: La página web. Los fundadores no tienen muchos conocimientos en Informática, por lo cual contrataron a "SS Consulting", una consultora de desarrollo de software para que construyan la primera página funcional de su empresa. Actualmente buscan maximizar los ingresos, mientras que mantienen los costos de operación bajos. Por lo tanto, su principal preocupación es que su página web sea funcional y responda a las necesidades de negocio que tienen para que los clientes puedan disfrutar al máximo su experiencia de viaje.
+La relación entre consumidores y aerolíneas va en declive. Según el Reporte de Estadísticas Institucionales en 2019, el transporte por vía área ocupa la segunda mayor cantidad de reclamos solo en Perú. Ante esta situación, la familia Lambda busca transformar la experiencia de viajes en latinoamérica centrándose en una experiencia del consumidor A1 desde inicio a fin del vuelo. Por ello, utilizando su larga experiencia en el rubro de las aerolíneas deciden fundar “LambdaVoyage”, una empresa de aerolínea que busca proporcionar una experiencia premium de viaje a una gama selecta de clientes VIP en todas las etapas del viaje. Para ello, buscó financiamiento del Ministerio de Turismo, el cual recientemente les proporcionó el dinero suficiente para poder financiar toda la logística de la empresa. Debido a su experiencia previa lograron rápidamente conseguir los aviones y pilotos necesarios cómo para comenzar a despegar. No obstante, todavía les faltaba un factor importante para comenzar a generar ingresos: La página web. Los fundadores no tienen muchos conocimientos en Informática, por lo cual contrataron a “SS Consulting”, una consultora de desarrollo de software para que construyan la primera página funcional de su empresa. Actualmente buscan maximizar los ingresos, mientras que mantienen los costos de operación bajos. Por lo tanto, su principal preocupación es que su página web sea funcional y responda a las necesidades de negocio que tienen para que los clientes puedan disfrutar al máximo su experiencia de viaje sin problemas. 
 
 **1.2. Modelo de Negocio**
 
@@ -541,37 +541,130 @@ La elección de las abstracciones de datos, sus operaciones y propiedades, junto
 
 En esta arquitectura basada en Spring, se emplea PostgreSQL como base de datos principal y Redis como caché para mejorar el rendimiento. La aplicación se descompone en microservicios desarrollados con Spring Boot, permitiendo una gestión modular de las funcionalidades. Un API Gateway con Spring Cloud Gateway se encarga de dirigir las solicitudes a los microservicios correspondientes, proporcionando seguridad y equilibrio de carga. Además, se utiliza MongoDB para almacenar datos de usuarios, mientras que una API externa de divisas se integra a través de un microservicio dedicado. La pasarela de pagos Stripe se conecta para el procesamiento seguro de transacciones, y el frontend está desarrollado en Angular para crear una interfaz de usuario atractiva. La autenticación se realiza mediante OAuth2, con tokens JWT firmados con RSA, garantizando un sólido sistema de seguridad en la aplicación. Esta arquitectura combina tecnologías robustas para lograr una aplicación escalable y segura.
 
+**Backend:**
+
+En el caso del backend se piensa seguir Domain-Driven Design (DDD) porque este usa varios conceptos y patrones para modelar y organizar el código de una manera que refleje de cerca el dominio del problema de la aplicación. DDD no prescribe una estructura de paquetes específica, hay paquetes y capas comunes que a menudo se utilizan en una aplicación DDD ya sea en microservicios o monolitos. Estos paquetes son los siguientes:
+
+1. **domain** : Este paquete contiene las clases y estructuras que representan el núcleo del dominio de la aplicación. Aquí se encuentran las entidades, agregados, objetos de valor y otros conceptos del dominio. Es el corazón de tu aplicación DDD.
+
+1. **application** : Este paquete contiene la lógica de aplicación que actúa como un intermediario entre la capa de dominio y la capa de presentación o la capa de infraestructura. Aquí se implementan casos de uso, servicios de aplicación y otras clases relacionadas con la lógica de la aplicación.
+2. **infrastructure** : En este paquete se encuentran las clases relacionadas con la infraestructura, como la implementación de repositorios, servicios de notificación, adaptadores de bases de datos y otros detalles técnicos necesarios para que la aplicación funcione.
+3. **presentation** : Este paquete contiene la lógica relacionada con la interfaz de usuario y la presentación de la aplicación. Puede incluir controladores, vistas, modelos de vista y otros componentes de la capa de presentación.
+4. **persistence** : En algunas aplicaciones, se crea un paquete separado para gestionar la capa de persistencia, que contiene implementaciones específicas de la tecnología de acceso a datos, como repositorios de bases de datos o adaptadores de almacenamiento.
+5. **services** : En este paquete se pueden incluir servicios reutilizables que no encajan directamente en los otros paquetes. Estos servicios pueden proporcionar funcionalidad compartida o utilidades para toda la aplicación.
+6. **shared** : A veces, se crea un paquete "shared" para elementos compartidos entre diferentes partes de la aplicación. Esto podría incluir tipos comunes, utilidades y constantes que se utilizan en varios lugares.
+
+**Frontend** :
+
+Como se mencionó anteriormente el enfoque en el backend será Domain-Driven Design (DDD). Entonces la estrategia que se optó a seguir para la arquitectura en el front en es la arquitectura de "Clean Architecture" o "Arquitectura Limpia". Esta arquitectura puede ser implementada tanto en el Backend como en el frontend, lo que ayuda a mantener una clara separación de responsabilidades y promueve la consistencia en todo el sistema. Esta arquitectura se basa en los siguientes principios:
+
+**Capas de dependencia decreciente** : Divide la aplicación en capas concéntricas con dependencias decrecientes, lo que significa que las capas interiores no conocen nada sobre las capas exteriores. Las capas suelen ser:
+
+1. **Dominio** : Esta capa representa el núcleo del dominio y contiene entidades, objetos de valor y reglas de negocio.
+2. **Aplicación** : Aquí se encuentran los casos de uso, servicios de aplicación y lógica de aplicación que orquestan las operaciones en el dominio.
+3. **Infraestructura** : Esta capa se encarga de las preocupaciones técnicas, como la interacción con bases de datos, servicios externos, UI, etc.
+
+**Independencia de Frameworks** : Aísla la lógica de negocio del resto de la aplicación y de cualquier framework específico. Esto facilita la sustitución de componentes tecnológicos sin afectar el núcleo de la aplicación.
+
+**Inversión de Dependencias (Dependency Inversion Principle - DIP)**: Invierte las dependencias de manera que las capas internas no dependan de las capas externas. Esto se logra mediante la inyección de dependencias.
+
+**Interactuar a través de interfaces** : Las diferentes capas interactúan entre sí a través de interfaces o contratos claramente definidos. Por ejemplo, las interfaces de servicio que definen la comunicación entre la capa de aplicación y la capa de dominio.
+
+**Tests unitarios y pruebas automatizadas** : La Arquitectura Limpia fomenta la escritura de pruebas unitarias para garantizar que las diferentes capas funcionen correctamente y se mantengan independientes.
+
+**Flexibilidad y escalabilidad** : Esta arquitectura permite la escalabilidad y la evolución de la aplicación a medida que cambian los requisitos sin afectar el núcleo de la lógica de negocio.
+
+
 **3.5. Elección de Tecnología**.
 
-**Angular** : Hemos seleccionado Angular como framework de desarrollo para el Frontend de la aplicación, puesto que Angular se basa en la creación de componentes reutilizables, los cuales permiten encapsular la lógica y la interfaz del usuario. Esto en particular es útil para el caso de negocio, debido a que lo que se busca es un rápido desarrollo de la aplicación para poder comenzar las operaciones de la empresa. En ese sentido, Angular aseguraría un desarrollo más modular y sencillo de mantener en el largo plazo, además de proporcionar código fácil de testear y escalar. Por otro lado, Angular asegura tener una estructura del proyecto que se ajuste a los módulos que se necesitan desarrollar de tal forma que se logra reducir el acoplamiento entre los componentes utilizados.
+**Angular** : Se eligió Angular como el framework de desarrollo para la página web de la aerolínea en lugar de React, Svelte, Vue u otros frameworks debido a su enfoque en la creación de componentes reutilizables, lo que acelera el desarrollo y facilita el mantenimiento a largo plazo. La arquitectura modular de Angular reduce el acoplamiento entre los componentes, lo que es crucial para una aplicación diversa como la de una aerolínea. Además, Angular ofrece un entorno propicio para realizar pruebas unitarias, asegurando la calidad y confiabilidad del software. La estructura del proyecto de Angular se alinea eficazmente con los módulos específicos requeridos en el negocio de una aerolínea, lo que disminuye el desorden y el riesgo de errores, proporcionando así una solución sólida y escalable para las operaciones de la empresa. Además, Angular cuenta con una comunidad grande de desarrolladores que pueden dar soporte a cualquier error o duda por parte de los desarrolladores de LambdaVoyage.
 
-**Spring Framework** : Hemos seleccionado Spring como framework para el desarrollo del backend, porque aceleraría el proceso de desarrollo de la aplicación, debido a las características y abstracciones para el desarrollo de los microservicios en Java. De esta forma, la empresa podría reducir tiempos de desarrollo y centrarse en la implementación de la aplicación. Como se trata de una arquitectura basada en componentes Spring permitirá la creación de los módulos planteados para este proyecto sobre todo para los componentes individuales. A su vez se podría usar las extensiones de Spring como Spring boot para un desarrollo rápido considerando el tiempo que se ha asignado para el desarrollo de este proyecto. Finalmente como el producto final es una página web, con el uso de Spring Framework se podrá obtener una rápida integración con tecnologías web como Angular, esto ayudará para la creación de infaces de usuario.
+Comentarios sobre **React** : Dado que se enfoca el proyecto en una página web de alta visibilidad en motores de búsqueda react no representa la mejor opción. React suele renderizar en el mismo navegador y puede dificultar la optimización.
 
-**Lambda** : Se ha decidido utilizar un servicio serverless como Lambda, porque la empresa busca maximizar los ingresos y mantener bajos los costos operativos. Con Lambda, se puede ejecutar código de manera eficiente en respuesta a eventos, lo que te permite escalar automáticamente para manejar aumentos en la carga de trabajo. En este caso particular, sería bastante útil para la generación de los tickets, los cuales serían parte fundamental del proceso de negocio, así que se podría asegurar que la plataforma esté en condiciones óptimas para satisfacer la demanda sin ningún problema.
+Comentarios sobre **Svelte** : Esta tecnología es relativamente nueva en comparación con Angular o React que llevan años de desarrollo en el mercado. Esto hace que su colección de bibliotecas no sea tan amplia o avanzada tecnológicamente, lo cual dificultaría la obtención de soluciones frente a problemas.
 
-**PostgreSQL** : Dado que LambdaVoyage maneja datos críticos relacionados con la gestión de vuelos, como reservas y perfiles de usuarios, PostgreSQL garantiza que los datos estén seguros y que se pueda realizar consultas eficientes. Además, su estructura relacional facilita la administración de datos críticos. Por ejemplo, el uso de esta tecnología se alinea con el escenario de calidad ACS001 sobre seguridad de datos y transacciones. PostgreSQL garantiza que los datos de los usuarios y las transacciones estén protegidos y seguros. Esto se lograría mediante el uso de métodos de autenticación y el control de acceso basado en roles para así asegurar una correcta integración de los datos. Por otro lado, se podría optimizar los índices en PostgreSQL para aumentar el rendimiento de las consultas a la base de datos.
+**Spring Framework** : Spring Framework se elige en este contexto porque ofrece un conjunto de herramientas y características que permiten acelerar el desarrollo, trabajar con microservicios de manera eficiente, desarrollar rápidamente aplicaciones y lograr una integración efectiva con tecnologías web. Si bien existen otras soluciones como Java EE, Quarkus u otras, la elección de Spring depende de las necesidades y requisitos específicos del proyecto y de las preferencias del equipo de desarrollo.
 
-**MongoDB** : Se ha decidido utilizar MongoDB con la finalidad de asegurar la autenticación y autorización de inicio de sesión de los usuarios. Al utilizar este tipo de base de datos NoSQL se obtiene un mejor rendimiento, porque guarda los datos en formato JSON. Al igual que con PostgreSQL, MongoDB se alinea con el atributo de calidad de rendimiento previsto en el escenario ACR001. Gracias a esto podemos ajustar las capacidades de la base de datos a nuestras necesidades.
+Comentarios sobre **Java EE** : Esta plataforma proporciona una amplia gama de especificaciones y API's para el desarrollo de aplicaciones profesionales. Podría ser una opción sólida para proyectos de alta magnitud, sin embargo si se eligiera para LamdaVoyage, un proyecto más pequeño, podría resultar en una curva de aprendizaje más empinada y una implementación más compleja.
 
-**Redis** : Hemos elegido Redis, porque asegura una respuesta rápida a las consultas a la Base de Datos. Al usar Redis para almacenar en caché datos frecuentemente accedidos, como información de vuelos, se puede ofrecer una experiencia de usuario más rápida y atractiva. Esto es crucial para retener clientes y maximizar los ingresos. Otras soluciones de caché pueden no ser tan eficientes y podrían resultar en una experiencia de usuario deficiente a la que Lambda Voyage quiere ofrecer. Redis cumple con nuestros escenarios de atributos de calidad donde prima la disponibilidad. Al mantener datos críticos en caché se garantiza que el proceso los procesos de transacciones puedan recuperarse sin problemas después de una interrupción.
+Comentarios sobre **Quarkus** : Este marco de trabajo, al igual que Svelte, es relativamente nuevo y podría representar una curva de aprendizaje para el equipo en general.
+
+**Lambda** : Se ha decidido utilizar un servicio serverless como Lambda, porque la empresa busca maximizar los ingresos y mantener bajos los costos operativos. Con Lambda, se puede ejecutar código de manera eficiente en respuesta a eventos, lo que te permite escalar automáticamente para manejar aumentos en la carga de trabajo. En este caso particular, sería bastante útil para la generación de los tickets, los cuales serían parte fundamental del proceso de negocio, así que se podría asegurar que la plataforma esté en condiciones óptimas para satisfacer la demanda sin ningún problema. Además, es la empresa más reconocida entre los proveedores de Cloud Computing.
+
+Comentarios sobre **Microsoft Azure** : En general no conviene este servicio de Microsoft porque ya se está trabajando con otros servicio de AWS por lo que juntas ambas podría traer más retrasos y conflictos.
+
+Comentarios sobre **Google Cloud:** Al igual que con Microsoft Azure, utilizar otro servicio podría dificultar el trabajo en vez de optimizar el rendimiento del equipo.
+
+Comentarios sobre **Apache OpenWhisk** : Al ser de código abierto podría requerir un esfuerzo adicional para implementar y administrar en comparación con Lambda que ya tiene sus servicios gestionados.
+
+**PostgreSQL** : Es conocido por sus robustos mecanismos de seguridad, incluyendo métodos de autenticación y control de acceso basado en roles. Esto permite asegurar la integridad y confidencialidad de los datos. Aunque otras bases de datos también ofrecen características de seguridad sólidas, PostgreSQL es ampliamente respetado por su enfoque en la seguridad. También ofrece la capacidad de optimizar índices, lo que contribuye a un rendimiento eficiente en consultas. Esto es esencial para aplicaciones que requieren una respuesta rápida de la base de datos. Si bien otras bases de datos también proporcionan herramientas de optimización, PostgreSQL es reconocido por su capacidad para manejar consultas complejas de manera eficaz.
+
+PostgreSQL se basa en una estructura relacional, lo que facilita la administración de datos con relaciones complejas. Sin embargo, en comparación con bases de datos NoSQL, como MongoDB, que son ideales para datos no estructurados o semiestructurados, PostgreSQL puede ser más adecuado cuando se trata de datos altamente relacionales y transaccionales, como los relacionados con una aerolínea.
+
+Además, es una base de datos de código abierto, lo que significa que es gratuito y ofrece flexibilidad para personalizar y extender según las necesidades del proyecto. En contraste, algunos SGBD comerciales, como Oracle, pueden requerir costosas licencias.
+
+Comentarios sobre **MySQL:** A diferencia de PostgreSQL, esta tecnología requiere soporte avanzado de tipos de datos o capacidades de análisis.
+
+Comentarios sobre **Microsoft SQL Server** : El proyecto no cuenta con una infraestructura basada en Microsoft por lo que intentar integrarlo a este sistema sería complejo.
+
+Comentarios sobre **Oracle Database** : Esta tecnología puede ser costosa y contener características muy avanzadas que podrían ser innecesarias para las dimensiones del trabajo.
+
+Comentarios sobre **MariaDB:** Es de código abierto y deriva de MySQL pero el equipo está más familiarizado en PostgreSQL y vamos a tener que utilizar características específicas de esta última tecnología mencionada.
+
+**MongoDB** : Es conocido por su alto rendimiento, especialmente cuando se trata de aplicaciones que manejan datos en formato JSON o BSON (Binary JSON). Esto se debe a su capacidad para almacenar y recuperar datos de manera eficiente en un formato que se asemeja a la estructura de los objetos de la aplicación. Otros sistemas NoSQL, como Cassandra o Couchbase, también ofrecen rendimiento de alto nivel, pero la elección dependerá de las necesidades específicas de la aplicación y de la complejidad de los datos.
+
+Es escalable horizontalmente, lo que significa que puede crecer fácilmente a medida que la aplicación se expande. Este es un factor importante para aplicaciones que esperan un crecimiento significativo en la cantidad de usuarios y datos. Otras bases de datos NoSQL, como Apache Cassandra, también son altamente escalables y son adecuadas para aplicaciones de gran escala, sin embargo se seleccionó MongoDB por la documentación que existe de sus servicios.
+
+Es una base de datos NoSQL orientada a documentos, lo que significa que no requiere un esquema fijo y permite la flexibilidad en la estructura de los datos. Esto es beneficioso para aplicaciones en evolución, donde los requisitos de datos pueden cambiar con el tiempo. Otras bases de datos NoSQL, como Redis o Neo4j, tienen modelos de datos diferentes y pueden ser más adecuadas para casos de uso específicos.
+
+También ofrece características de autenticación y autorización que son adecuadas para la gestión de usuarios y roles, lo que lo convierte en una elección sólida para gestionar la seguridad en aplicaciones web. Sin embargo, otras bases de datos NoSQL, como Couchbase o Cassandra, también ofrecen opciones de seguridad robustas y pueden ser apropiadas según las necesidades de autenticación y autorización específicas. En este caso se eligió MongoDB porque no se tiene la necesidad de tener autenticación y autorización personalizada.
+
+Comentarios sobre **Cassandra** : Suele ser más compleja de configurar y administrar en comparación con MongoDB, además de ser menos familiar para el equipo de desarrollo.
+
+Comentarios sobre **Couchbase** : Puede ser más costosa que MongoDB.
+
+**Redis** : Es ampliamente conocido por su rendimiento excepcional en la gestión de datos en memoria. Debido a su arquitectura de almacenamiento en memoria y su capacidad para manejar datos clave-valor, Redis es extremadamente rápido en la recuperación y almacenamiento de datos en caché. Esto es esencial para proporcionar respuestas rápidas a las consultas de la base de datos, lo que mejora significativamente la experiencia del usuario.
+
+Se especializa en la gestión de caché y es ideal para almacenar datos frecuentemente accedidos. Su capacidad para mantener datos en memoria permite una respuesta instantánea a las solicitudes, lo que reduce la carga en la base de datos subyacente, en este caso, PostgreSQL. Otras soluciones de caché pueden no ser tan eficientes en la gestión de datos en caché, lo que puede resultar en una menor eficiencia en la aceleración de consultas.
+
+Redis está diseñado para ser altamente disponible y tolerante a fallos. Puede configurarse para almacenar copias de seguridad de datos en caché y recuperarse rápidamente después de una interrupción. Esto es crítico para garantizar que los procesos de transacciones puedan recuperarse sin problemas en caso de problemas en el servidor o en la red.
+
+También cuenta con una comunidad activa de usuarios y una amplia base de conocimientos, lo que facilita la resolución de problemas y la implementación efectiva. Además, existen bibliotecas y herramientas de terceros que facilitan la integración de Redis con sistemas como PostgreSQL. Redis también es altamente escalable y puede manejar grandes volúmenes de datos en memoria. Esto es importante para aplicaciones que pueden experimentar un crecimiento significativo en la demanda de datos en caché.
+
+Comentarios sobre **Memcached** : A diferencia con Redis, esta carece de características avanzadas de configuración y administración como Redis, además esta última cuenta con estructuras de datos mejor definidas como listas, conjuntos y mapas.
+
+Comentarios sobre **Hazelcast** : Es menos conocido por el equipo, podría representar más complejidad en la implementación a comparación de Redis.
+
+Comentarios sobre **Apache Kafka** : Esta tecnología se basa más en transiciones y mensajería en tiempo real, por lo que no está diseñado para almacenamiento en caché o recuperación de datos.
+
+Comentarios sobre **Oracle Coherence** : Esta tecnología está más orientada a empresas que requieren una plataforma completa de procesamiento de memoria por lo que escapa a las necesidades del proyecto.
 
 **AWS IoT Core:** Esta tecnología es esencial para permitir el seguimiento en tiempo real de los aviones y proporcionar actualizaciones en tiempo real a los pasajeros. Dado que la base de datos para este proyecto se centra en la experiencia del consumidor, la capacidad de proporcionar información actualizada sobre el estado de los vuelos, retrasos o cambios en tiempo real es un diferenciador clave que mejorará la satisfacción del cliente. AWS IoT Core es altamente especializado en IoT y proporciona una administración eficiente de dispositivos y una conectividad segura. Optar por una plataforma de IoT alternativa podría requerir una inversión significativa en desarrollo personalizado y podría no ofrecer la misma calidad de servicio. Por ejemplo IoT Core se alinea con los escenarios previstos dentro del módulo de tracking únicamente, cumpliendo con todos los atributos de calidad mencionados en esta sección.
+
+Comentarios sobre **Microsoft Azure IoT Hub** : En el proyecto ya se está utilizando otra tecnología de AWS por lo que intentar una transición entre ambos servicios podría desencadenar más conflictos en el desarrollo.
+
+Comentarios sobre **Google IoT Core** : Es menos conocido por el equipo y al igual que Microsoft podría resultar en retrasos significativos por que ya se está utilizando otro servicio de AWS.
+
+Comentarios sobre **IBM Watson IoT Platform:** Esta plataforma requiere conocimientos avanzados de los servicios de IBM además de ser menos adoptada que AWS, encontrar más documentación sobre el servicio puede ser dificultoso.
 
 **4. Tácticas**
 
 **4.1. Disponibilidad**
 
+
 La disponibilidad es un factor crítico en la operación de una página web de aerolínea como LambdaVoyage. Los usuarios confían en que la plataforma esté disponible en todo momento, sin importar la carga de tráfico o los posibles fallos del sistema. Para asegurar esta disponibilidad, hemos diseñado y desarrollado LambdaVoyage haciendo uso de una combinación de tecnologías y prácticas sólidas. A continuación, justificamos y detallamos cómo hemos abordado este desafío:
 
-**Spring Boot y Spring MVC para Desarrollo Web** : Hemos elegido Spring Boot y Spring MVC para construir la aplicación web de LambdaVoyage. Spring Boot simplifica la configuración y gestión de la aplicación, mientras que Spring MVC nos permite desarrollar páginas web robustas y escalables.
+**Redundancia de base de datos:** Para esta táctica se pretende formar un arreglo de master y slave en postgresql donde la información se replicara hacia una base de datos de esta manera aseguramos la disponibilidad. Según el servidor que está ejecutando esta aplicación se calculará la disponibilidad. Se pretende llegar a una disponibilidad de 99,9%.
 
-**Spring Data JPA con PostgreSQL** : Para garantizar la disponibilidad y escalabilidad de nuestra base de datos, implementamos Spring Data JPA con PostgreSQL. La base de datos se beneficia de la replicación y la escalabilidad vertical y horizontal, asegurando que los datos estén disponibles incluso en situaciones de alta demanda.
+**Implementación de CDN con Amazon Cloudfront:** La implementación de una CDN (Content Delivery Network) con Amazon CloudFront es una estrategia efectiva para mejorar la disponibilidad y el rendimiento de una página web, especialmente en el caso de una aerolínea como LambdaVoyage. Aquí se detallan los beneficios y las consideraciones clave de esta implementación:
 
-**OAuth 2.0 con Spring Security** : La seguridad es esencial para proteger los datos de nuestros usuarios y garantizar la disponibilidad de sus cuentas. Implementamos OAuth 2.0 con Spring Security para autenticación y autorización seguras, permitiendo a los usuarios acceder de manera segura a sus cuentas.
+**Beneficios de la implementación de CDN con Amazon CloudFront:**
 
-**Envío de Correos con Spring** : Para mantener a nuestros usuarios informados sobre reservas y actualizaciones de vuelos, utilizamos Spring para enviar correos electrónicos de manera confiable. Esto garantiza que los mensajes lleguen a los destinatarios en todo momento.
-
-**Apache POI para Documentos de Oficina tipo xlsx** : Con Apache POI, generamos y manipulamos documentos de oficina, lo que incluye horarios de vuelos y facturas. Esto asegura la disponibilidad de documentos precisos y actualizados para nuestros usuarios.
+1. **Reducción de la latencia:** Amazon CloudFront distribuye el contenido de la web a través de una red global de servidores. Esto significa que los usuarios pueden cargar recursos (imágenes, videos, archivos CSS, JavaScript, etc.) desde un servidor cercano en lugar de tener que acceder a un servidor central. Esto reduce significativamente la latencia y mejora la velocidad de carga de la página.
+2. **Carga rápida de contenido estático:** La mayoría de los CDNs almacenan en caché contenido estático, como imágenes y archivos CSS/JS, lo que permite una carga más rápida. Los usuarios obtienen estos recursos desde la CDN en lugar de solicitarlos directamente al servidor de origen.
+3. **Alivio de la carga del servidor de origen:** Al mover el tráfico de contenido estático fuera del servidor de origen, se reduce la carga en el servidor web principal. Esto permite que el servidor se enfoque en el procesamiento de solicitudes dinámicas, como reservas de vuelos y consultas de bases de datos.
+4. **Alta disponibilidad:** Amazon CloudFront tiene redundancia incorporada y una amplia red de servidores. Esto mejora la disponibilidad de tus recursos y la tolerancia a fallos.
+5. **Escalabilidad automática:** El CDN se escala automáticamente según la demanda, lo que garantiza que tu sitio web pueda manejar grandes volúmenes de tráfico, como durante promociones especiales o picos estacionales.
 
 **Spring Cache con Redis** : Utilizamos Spring Cache en combinación con Redis para almacenar en caché datos comunes y reducir la carga en el servidor. Esto garantiza una respuesta más rápida y una mayor disponibilidad durante picos de tráfico.
 
@@ -597,19 +690,18 @@ Con respecto al aseguramiento del atributo de calidad de la mantenibilidad, es n
 
 **4.3. Interoperabilidad**
 
-**Uso de estándares abiertos** : Con el uso de las herramientas de código abierto mencionadas anteriormente los diferentes módulos del proyecto podrán comunicarse utilizando protocolos y formatos de datos en común.
 
-**Interfaces de programación de aplicaciones (API's)**: Con un adecuado diseño de API's para nuestras bases de datos se podrá realizar una correcta interacción entre las aplicaciones finales con los usuarios. A su vez esto facilitará la integración con servicios de terceros
+Para asegurar la interoperabilidad del sistema se van a implementar las siguientes estrategias:
 
-**Orquestación de servicios** : Para este caso el uso de herramientas como AWS Services permite gestionar la implementación escalabilidad de los servicios de seguimiento de aviones.
+**Estándares web:** Asegurarse de que la página web cumple con los estándares web actuales, como HTML, CSS y JavaScript o TypeScript.
 
-API Gateways: Utilizar un API Gateway como punto de entrada centralizado para administrar las solicitudes de API proporciona características de autenticación, autorización, caché y registro.
+**Diseño receptivo:** Implementar un diseño web responsive que se adapte a las necesidades de los clientes. Esto involucra a usuarios de escritorio, tabletas y teléfonos móviles para garantizar una experiencia de usuario consistente en todos los dispositivos.
 
-**Pruebas de Integración:** Realizar pruebas de integración asegura que los módulos pueden comunicarse entre sí de manera efectiva y que los datos se muestran correctamente.
+**Pruebas cruzadas** : Se realizarán pruebas exhaustivas en múltiples navegadores web (como Chrome, Firefox, Safari, Edge) y en diferentes sistemas operativos como (Windows, macOS, Android, iOS) para identificar y resolver problemas de compatibilidad.
 
-**Seguridad:** Se deben implementar protocolos de seguridad sólidos que encripten los datos para proteger la integridad.
+**Pruebas automatizadas** : Implementaremos pruebas automatizadas para verificar regularmente la funcionalidad y la interoperabilidad del sistema web. Las pruebas de regresión pueden ayudar a identificar problemas después de las actualizaciones. Se está considerando utilizar Selenium, debido a que se asegurará la compatibilidad con el código Java en los microservicios.
 
-**Monitorización y Registro** : Establecer el monitoreo con servicios y detectar problemas de interoperabilidad en tiempo real. Para esto se puede usar el servicio de AWS.
+**Documentación y soporte** : Vamos a proporcionar documentación clara y soporte técnico para los desarrolladores que deseen integrarse con el sistema web a través de API u otros métodos. Esto facilita la colaboración y la interoperabilidad. Se va a utilizar Confluence para mantener la documentación.
 
 **4.4. Rendimiento**
 
@@ -646,6 +738,20 @@ Observaciones adicionales:
 **Renovación de tokens y administrar sesiones:** OAuth 2.0 permite la emisión de tokens de actualización, también conocidos como tokens de renovación, que se pueden usar para obtener un nuevo JWT sin necesidad de autenticación del usuario. Esto es útil para mantener las sesiones activas sin volver a solicitar credenciales.
 
 **Consideraciones relacionadas con la seguridad:** Mantener la seguridad de las claves RSA y garantizar que las conexiones con la base de datos se realicen de manera segura mediante el uso de protocolos como TLS/SSL son cruciales.
+
+**4.5. Usabilidad**
+
+**Cancelar:** El proceso de reserva es un proceso crucial para nuestra empresa, por lo que es necesario permitir a nuestros usuarios la posibilidad de cancelar la reserva en cualquier etapa del proceso y liberar los recursos involucrados en el sistema. Para evitar posibles confusiones se tendrá que implementar ventanas emergentes para asegurar que el cliente esté seguro de su decisión.
+
+**Pausar / reanudar:** Para el proceso de reserva el cliente podrá pausar su reserva por hasta un máximo de 15 minutos para luego posteriormente continuar con su compra con todos los datos guardados. Pasado ese tiempo el sistema liberará los recursos de la reserva planteada.
+
+**Mantener el modelo de sistema** : Se implementará una barra de progreso para indicar al usuario la etapa en la que se encuentra del proceso de reserva. De esta forma se podrá proporcionar feedback al usuario sobre la duración estimada del proceso. Como nosotros buscamos la simplificación de la reserva, la barra indicará los cortos pasos que el usuario tiene que realizar.
+
+**Diseño Responsive** : La plataforma será compatible con distintos dispositivos como teléfonos inteligentes y computadoras. El diseño de la página se adaptará a las pantallas en la que se utilice. Además, se contempla que sea compatible con distintos navegadores. Para lograr esto, se utilizarán principalmente componentes Responsive de Angular Material. Es una librería muy utilizada en el desarrollo de frontend Angular, el cual nos asegurará una buena experiencia visual y un rápido desarrollo.
+
+**Ayudas visuales** : Durante el proceso de reserva, se tendrán indicaciones claras sobre lo que el usuario debe hacer en cada etapa del proceso, de tal forma que el usuario sea capaz de realizar cada paso sin ayuda de soporte.
+
+**Diversidad de idiomas** : La página web estará disponible en 6 idiomas (inglés, español, francés, alemán, ruso y chino). Esto asegurará una buena experiencia de usuario para nuestra diversidad de clientes, facilitando el entendimiento de todo el contenido mostrado durante el proceso de reserva y pago. Para ello, se utilizará la librería ngx-translate para asegurar que la aplicación sea multilenguaje.
 
 **5. Tópicos en Arquitectura de Software (Componente Individual):**
 
