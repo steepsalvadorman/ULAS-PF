@@ -995,3 +995,5 @@ Esta función y la vinculación a la plataforma de firebase se implementan en el
 El proyecto y experimentación están cargados en el enlace que redirecciona al repositorio, los detalles de configuración para firebase y firestore estarán disponibles en un readme.
 
 **Github:** https://github.com/20111383/Auth\_firebase\_firestore
+
+<!--- Hola somos el grupo03. -->
